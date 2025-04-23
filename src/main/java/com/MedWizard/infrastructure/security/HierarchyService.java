@@ -19,8 +19,8 @@ public class HierarchyService {
         for(GrantedAuthority authority: logged.getAuthorities()){
             var authoritiesReachable =  roleHierarchy.getReachableGrantedAuthorities(List.of(authority));
 
-            for(GrantedAuthority perfil: authoritiesReachable){
-                if(perfil.getAuthority().equals(desiredProfile) || logged.getId().equals(actor.getId()))
+            for(GrantedAuthority profile: authoritiesReachable){
+                if(profile.getAuthority().equals(desiredProfile) || logged.getId().equals(actor.getId()))
                     return false;
             }
         }
