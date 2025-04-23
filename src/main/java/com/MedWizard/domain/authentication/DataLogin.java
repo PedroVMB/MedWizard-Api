@@ -1,4 +1,7 @@
 package com.MedWizard.domain.authentication;
 
-public class DataLogin {
+import jakarta.validation.constraints.NotBlank;
+
+public record DataLogin(@NotBlank String email,
+                        @NotBlank String senha) {
 }

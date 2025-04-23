@@ -1,4 +1,6 @@
 package com.MedWizard.domain.authentication;
 
-public class DataRefreshToken {
+import jakarta.validation.constraints.NotBlank;
+
+public record DataRefreshToken (@NotBlank String refreshToken){
 }

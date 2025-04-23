@@ -16,10 +16,10 @@ import java.io.UnsupportedEncodingException;
 public class EmailService implements EmailSender {
 
     private final JavaMailSender emailSender;
-    private static final String EMAIL_ORIGEM = "forumhub@email.com";
-    private static final String NOME_ENVIADOR = "Forum Hub";
+    private static final String EMAIL_ORIGEM = "medWizard@email.com";
+    private static final String NOME_ENVIADOR = "Med Wizard";
 
-    public static final String URL_SITE = "http://localhost:8080"; //"forumhub.com.br"
+    public static final String URL_SITE = "http://localhost:8080"; //"medwizard.com.br"
 
     public EmailService(JavaMailSender emailSender) {
         this.emailSender = emailSender;

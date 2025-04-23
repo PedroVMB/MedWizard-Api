@@ -97,7 +97,7 @@ public class User implements UserDetails {
         this.expiracaoToken = null;
     }
 
-    public void desativar() {
+    public void disable() {
         this.ativo = false;
     }
 
@@ -116,7 +116,7 @@ public class User implements UserDetails {
         this.profiles.add(profile);
     }
 
-    public void reativar() {
+    public void reactivate() {
         this.ativo = true;
     }
 
