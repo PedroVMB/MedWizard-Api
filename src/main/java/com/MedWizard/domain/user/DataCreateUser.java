@@ -2,7 +2,7 @@ package com.MedWizard.domain.user;
 
 import jakarta.validation.constraints.NotBlank;
 
-public record DataCreateUsuario(
+public record DataCreateUser(
         @NotBlank String email,
         @NotBlank String senha,
         @NotBlank String nomeCompleto,

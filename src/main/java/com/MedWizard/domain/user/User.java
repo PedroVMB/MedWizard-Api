@@ -1,7 +1,7 @@
 package com.MedWizard.domain.user;
 
-import com.MedWizard.config.exception.BusinnesRuleException;
-import com.MedWizard.domain.profile.Perfil;
+import com.MedWizard.infrastructure.exception.BusinnesRuleException;
+import com.MedWizard.domain.profile.Profile;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -13,7 +13,6 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -22,7 +21,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name="usuarios")
-public class Usuario implements UserDetails {
+public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,12 +38,12 @@ public class Usuario implements UserDetails {
     @JoinTable(name = "usuarios_perfis",
             joinColumns = @JoinColumn(name = "usuario_id"),
             inverseJoinColumns = @JoinColumn(name = "perfil_id"))
-    private List<Perfil> perfils = new ArrayList<>();
+    private List<Profile> profiles = new ArrayList<>();
 
     @Deprecated
-    public Usuario(){}
+    public User(){}
 
-    public Usuario(DataCreateUsuario dados, String senhaCriptografada, Perfil perfil) {
+    public User(DataCreateUser dados, String senhaCriptografada, Profile profile) {
         this.nomeCompleto = dados.nomeCompleto();
         this.email = dados.email();
         this.senha = senhaCriptografada;
@@ -53,12 +52,12 @@ public class Usuario implements UserDetails {
         this.token = UUID.randomUUID().toString();
         this.expiracaoToken = LocalDateTime.now().plusMinutes(30);
         this.ativo = false;
-        this.perfils.add(perfil);
+        this.profiles.add(profile);
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return (Collection<? extends GrantedAuthority>) perfils;
+        return (Collection<? extends GrantedAuthority>) profiles;
     }
 
     @Override
@@ -102,7 +101,7 @@ public class Usuario implements UserDetails {
         this.ativo = false;
     }
 
-    public Usuario alterarDados(DataEditUsuario dados) {
+    public User alterarDados(DataEditUser dados) {
         if(dados.nomeUsuario() != null){
             this.nomeUsuario = dados.nomeUsuario();
         }
@@ -113,8 +112,8 @@ public class Usuario implements UserDetails {
         this.senha = senhaCriptografada;
     }
 
-    public void adicionarPerfil(Perfil perfil) {
-        this.perfils.add(perfil);
+    public void adicionarPerfil(Profile profile) {
+        this.profiles.add(profile);
     }
 
     public void reativar() {

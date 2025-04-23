@@ -1,4 +1,4 @@
 package com.MedWizard.domain.user;
 
-public record DataListUsuario() {
+public record DataListUser() {
 }

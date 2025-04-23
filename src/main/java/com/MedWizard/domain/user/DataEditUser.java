@@ -1,6 +1,6 @@
 package com.MedWizard.domain.user;
 
-public record DataEditUsuario(
+public record DataEditUser(
         String nomeUsuario
 ) {
 }

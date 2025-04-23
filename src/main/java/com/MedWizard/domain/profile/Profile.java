@@ -5,13 +5,13 @@ import org.springframework.security.core.GrantedAuthority;
 
 @Entity
 @Table(name = "perfis")
-public class Perfil implements GrantedAuthority {
+public class Profile implements GrantedAuthority {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Enumerated(EnumType.STRING)
-    private PerfilName nome;
+    private ProfileName nome;
 
     @Override
     public String getAuthority() {

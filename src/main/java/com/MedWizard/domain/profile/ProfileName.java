@@ -1,6 +1,6 @@
 package com.MedWizard.domain.profile;
 
-public enum PerfilName {
+public enum ProfileName {
     MEDICO,
     PACIENTE,
     ADMINISTRADOR
