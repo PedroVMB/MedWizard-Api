@@ -42,7 +42,7 @@ public class UserService implements UserDetailsService {
     public User create(DataCreateUser data) {
         var encryptedPassword = passwordEncoder.encode(data.senha());
 
-        var profile = profileRepository.findByNome(ProfileName.ADMINISTRADOR);
+        var profile = profileRepository.findByNome(ProfileName.ADMIN);
         var user = new User(data, encryptedPassword, profile);
 
         emailService.SendEmailVerification(user);

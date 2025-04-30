@@ -19,7 +19,6 @@ public class PractitionerController {
         this.practitionerService = practitionerService;
     }
 
-    // **Cadastrar novo Médico**
     @PostMapping
     public ResponseEntity<DataListPractitioner> register(@RequestBody @Valid DataCreatePracticioner data, UriComponentsBuilder uriBuilder){
         var practitioner = practitionerService.create(data);
@@ -27,21 +26,18 @@ public class PractitionerController {
         return ResponseEntity.created(uri).body(new DataListPractitioner(practitioner));
     }
 
-    // **Buscar Médico por ID**
     @GetMapping("/{id}")
     public ResponseEntity<DataListPractitioner> getById(@PathVariable Long id) {
         Practitioner practitioner = practitionerService.findById(id);
         return ResponseEntity.ok(new DataListPractitioner(practitioner));
     }
 
-    // **Atualizar Médico**
     @PutMapping("/{id}")
     public ResponseEntity<DataListPractitioner> update(@PathVariable Long id, @RequestBody @Valid DataEditPracticioner data) {
         Practitioner practitioner = practitionerService.update(id, data);
         return ResponseEntity.ok(new DataListPractitioner(practitioner));
     }
 
-    // **Excluir Médico**
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         practitionerService.delete(id);

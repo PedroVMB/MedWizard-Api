@@ -31,6 +31,7 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(
                         req -> {
                             req.requestMatchers("/login", "/atualizar-token", "/registrar", "verificar-conta").permitAll();
+                            req.requestMatchers("/medicos").hasAnyRole("ADMIN", "MEDICO").anyRequest().authenticated();
 
 
                             req.requestMatchers(HttpMethod.PATCH, "/adicionar-perfil/**").hasRole("ADMIN");
