@@ -9,61 +9,64 @@ import java.time.LocalDateTime;
 @Table(
         name = "medical_records",
         uniqueConstraints = {
-                @UniqueConstraint(columnNames = {"patient_id", "practitioner_id"})
+                @UniqueConstraint(columnNames = {"paciente_id", "medico_id"})
         }
 )
-public class MedicalRecord{
+public class MedicalRecord {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JoinColumn(name = "patient_id", nullable = false)
-    private Patient patient;
+    @JoinColumn(name = "paciente_id", nullable = false)
+    private Patient paciente;
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JoinColumn(name = "practitioner_id", nullable = false)
-    private Practitioner practitioner;
+    @JoinColumn(name = "medico_id", nullable = false)
+    private Practitioner medico;
 
-    private String diagnosis;
+    @Column(name = "diagnostico")
+    private String diagnostico;
 
-    private String treatment;
+    @Column(name = "tratamento")
+    private String tratamento;
 
-    private LocalDateTime createdAt;
+    @Column(name = "criado_em")
+    private LocalDateTime criadoEm;
 
     @Deprecated
     public MedicalRecord() {}
 
-    public MedicalRecord(Patient patient, Practitioner practitioner, String diagnosis, String treatment) {
-        this.patient = patient;
-        this.practitioner = practitioner;
-        this.diagnosis = diagnosis;
-        this.treatment = treatment;
-        this.createdAt = LocalDateTime.now();
+    public MedicalRecord(Patient paciente, Practitioner medico, String diagnostico, String tratamento) {
+        this.paciente = paciente;
+        this.medico = medico;
+        this.diagnostico = diagnostico;
+        this.tratamento = tratamento;
+        this.criadoEm = LocalDateTime.now();
     }
 
     public Long getId() {
         return id;
     }
 
-    public Patient getPatient() {
-        return patient;
+    public Patient getPaciente() {
+        return paciente;
     }
 
-    public Practitioner getPractitioner() {
-        return practitioner;
+    public Practitioner getMedico() {
+        return medico;
     }
 
-    public String getDiagnosis() {
-        return diagnosis;
+    public String getDiagnostico() {
+        return diagnostico;
     }
 
-    public String getTreatment() {
-        return treatment;
+    public String getTratamento() {
+        return tratamento;
     }
 
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
+    public LocalDateTime getCriadoEm() {
+        return criadoEm;
     }
 }

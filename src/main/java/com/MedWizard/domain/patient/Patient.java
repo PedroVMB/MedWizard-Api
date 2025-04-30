@@ -13,34 +13,36 @@ public class Patient {
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", unique = true, nullable = false)
-    private User user;
+    private User usuario;
 
-    private String healthInsurance;
+    @Column(name = "plano_saude")
+    private String planoSaude;
 
-    private String emergencyContact;
+    @Column(name = "contato_emergencia")
+    private String contatoEmergencia;
 
     @Deprecated
     public Patient() {}
 
-    public Patient(User user, String healthInsurance, String emergencyContact) {
-        this.user = user;
-        this.healthInsurance = healthInsurance;
-        this.emergencyContact = emergencyContact;
+    public Patient(User usuario, String planoSaude, String contatoEmergencia) {
+        this.usuario = usuario;
+        this.planoSaude = planoSaude;
+        this.contatoEmergencia = contatoEmergencia;
     }
 
     public Long getId() {
         return id;
     }
 
-    public User getUser() {
-        return user;
+    public User getUsuario() {
+        return usuario;
     }
 
-    public String getHealthInsurance() {
-        return healthInsurance;
+    public String getPlanoSaude() {
+        return planoSaude;
     }
 
-    public String getEmergencyContact() {
-        return emergencyContact;
+    public String getContatoEmergencia() {
+        return contatoEmergencia;
     }
 }
