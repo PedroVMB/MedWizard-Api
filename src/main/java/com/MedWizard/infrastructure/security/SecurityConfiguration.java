@@ -36,6 +36,7 @@ public class SecurityConfiguration {
 
                             req.requestMatchers("/medico").hasAnyRole("ADMIN", "MEDICO").anyRequest();
                             req.requestMatchers("/paciente").hasAnyRole("ADMIN", "MEDICO").anyRequest();
+                            req.requestMatchers("/prontuario").hasRole("MEDICO").anyRequest();
 
                             req.anyRequest().authenticated();
                         }
