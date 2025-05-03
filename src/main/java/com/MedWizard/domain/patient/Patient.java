@@ -45,4 +45,16 @@ public class Patient {
     public String getContatoEmergencia() {
         return contatoEmergencia;
     }
+
+    public void setUsuario(User usuario) {
+        this.usuario = usuario;
+    }
+
+    public void setPlanoSaude(String planoSaude) {
+        this.planoSaude = planoSaude;
+    }
+
+    public void setContatoEmergencia(String contatoEmergencia) {
+        this.contatoEmergencia = contatoEmergencia;
+    }
 }

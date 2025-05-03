@@ -7,7 +7,7 @@ public record DataListPractitioner(
         String numeroLicenca,
         Specialty especialidade,
         String nomeClinica,
-        String nomeUsuario
+        String nomeCompleto
 ) {
     public DataListPractitioner(Practitioner practitioner) {
         this(
@@ -15,7 +15,7 @@ public record DataListPractitioner(
                 practitioner.getNumeroLicenca(),
                 practitioner.getEspecialidade(),
                 practitioner.getNomeClinica(),
-                practitioner.getUsuario().getNomeUsuario()  // Supondo que o método `getNomeUsuario` exista em `User`
+                practitioner.getUsuario().getNomeCompleto()  // Supondo que o método `getNomeUsuario` exista em `User`
         );
     }
 }
