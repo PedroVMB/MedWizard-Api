@@ -31,11 +31,11 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(
                         req -> {
                             req.requestMatchers("/login", "/atualizar-token", "/registrar", "verificar-conta").permitAll();
-                            req.requestMatchers("/medicos").hasAnyRole("ADMIN", "MEDICO").anyRequest().authenticated();
-
-
                             req.requestMatchers(HttpMethod.PATCH, "/adicionar-perfil/**").hasRole("ADMIN");
                             req.requestMatchers(HttpMethod.PATCH, "/reativar-conta/**").hasRole("ADMIN");
+
+                            req.requestMatchers("/medico").hasAnyRole("ADMIN", "MEDICO").anyRequest();
+                            req.requestMatchers("/paciente").hasAnyRole("ADMIN", "MEDICO").anyRequest();
 
                             req.anyRequest().authenticated();
                         }
