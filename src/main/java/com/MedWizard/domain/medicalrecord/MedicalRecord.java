@@ -69,4 +69,24 @@ public class MedicalRecord {
     public LocalDateTime getCriadoEm() {
         return criadoEm;
     }
+
+    public void setPaciente(Patient paciente) {
+        this.paciente = paciente;
+    }
+
+    public void setMedico(Practitioner medico) {
+        this.medico = medico;
+    }
+
+    public void setDiagnostico(String diagnostico) {
+        this.diagnostico = diagnostico;
+    }
+
+    public void setTratamento(String tratamento) {
+        this.tratamento = tratamento;
+    }
+
+    public void setCriadoEm(LocalDateTime criadoEm) {
+        this.criadoEm = criadoEm;
+    }
 }
